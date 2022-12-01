@@ -2,6 +2,8 @@ const mongoose = require("mongoose")
 const { serialize } = require("v8")
 const User = require("../models/User")
 
+
+//busca todos los usuarios
 const findAll = (req, res) => {
     User.find((err, users) => {
         err && res.status(500).send(err.message)
@@ -10,6 +12,8 @@ const findAll = (req, res) => {
     })
 }
 
+
+//busca usuario por id
 const findById = (req, res) => {
     User.findById(req.params.id, (err, user) =>{
         err && res.status(500).send(err.message);
@@ -18,6 +22,7 @@ const findById = (req, res) => {
     })
 }
 
+//crea usuarios
 const addUser = (req, res) => {
 
     let user = new User({
@@ -32,6 +37,7 @@ const addUser = (req, res) => {
     })
 }
 
+//edita usuarios
 const editar = async (req, res) => {
     try {
         const id = req.params.id;
@@ -49,7 +55,7 @@ const editar = async (req, res) => {
     }
 }
 
-
+//elimina usuarios
 const eliminar = async (req, res) => {
     try {
         const id = req.params.id;
