@@ -3,6 +3,7 @@ const { serialize } = require("v8")
 const User = require("../models/User")
 
 
+
 //busca todos los usuarios
 const findAll = (req, res) => {
     User.find((err, users) => {
@@ -17,7 +18,7 @@ const findAll = (req, res) => {
 const findById = (req, res) => {
     User.findById(req.params.id, (err, user) =>{
         err && res.status(500).send(err.message);
-
+        
         res.status(200).json(user);
     })
 }
